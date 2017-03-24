@@ -8,7 +8,7 @@ class Raiz extends AbstractOperador {
     operar(x, y) {
         // Implementation of abstract method.
         console.log('Raiz');
-        Math.pow(x, 1 / y);
+        return Math.pow(x, 1 / y);
     }
 
 }

@@ -44,6 +44,7 @@ $(function() {
             .done(function(response) {
                 var result = response.result;
                 var resultContainer = $('.result-container').show();
+                $('#operation').html(data.left + ' ' + transformarOperador(data.operator) + ' ' + data.right + ' = ');
                 $('#result').html(result);
                 console.log(response);
             })
@@ -51,5 +52,34 @@ $(function() {
                 console.error(error);
             });
     });
+
+    function transformarOperador(operador) {
+        var texto = ''
+        switch(operador) {
+            case 'Division':
+                texto = '/';
+                break;
+            case 'Multiplicacion':
+                texto = '*';
+                break;
+             case 'Potenciacion':
+                texto = 'a la';
+                break;
+            case 'Raiz':
+                texto = 'Raiz';
+                break;
+            case 'Resta':
+                texto = '-';
+                break;
+            case 'Suma':
+                texto = '+';
+                break;
+            default:
+                console.error('Operador Invalido');
+                break;
+        }
+
+        return texto;
+    }
 
 });

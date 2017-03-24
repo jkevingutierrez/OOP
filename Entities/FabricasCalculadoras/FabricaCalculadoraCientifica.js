@@ -11,7 +11,7 @@ class FabricaCalculadoraCientifica extends AbstractFabricaCalculadora {
     crearCalculadora() {
         // Implementation of abstract method.
         console.log('Crear Calculadora Cientifica');
-        this.calculadora = new CalculadoraBasica();
+        this.calculadora = new CalculadoraCientifica();
         return this.calculadora;
     }
 

@@ -38,7 +38,7 @@ dispatcher.onGet('/operators', function(request, response) {
 dispatcher.onPost('/operate', function(request, response) {
     var body = JSON.parse(request.body);
     console.log(body);
-    var fabrica = new FabricaCalculadoraBasica();
+    var fabrica = new FabricaCalculadoraCientifica();
     var calculadora = fabrica.crearCalculadora();
     var resultado = calculadora.calcular(body.left, body.right, body.operator);
 

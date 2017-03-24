@@ -8,7 +8,7 @@ class Potenciacion extends AbstractOperador {
     operar(x, y) {
         // Implementation of abstract method.
         console.log('Elevar');
-        Math.pow(x, y);
+        return Math.pow(x, y);
     }
 
 }
