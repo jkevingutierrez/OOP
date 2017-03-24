@@ -38,9 +38,12 @@ class CalculadoraCientifica extends AbstractCalculadora {
                 console.error('Operador Invalido');
                 break;
         }
-        console.log(operador)
         console.log('Operar con calculadora cientifica');
-        return this.operador.operar(x, y);
+         if (this.operador) {
+            return this.operador.operar(x, y);
+        } else {
+            return 'El operador no existe para esta calculadora';
+        }
     }
 
 }

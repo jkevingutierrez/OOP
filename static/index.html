@@ -21,6 +21,14 @@
         <div class="container">
             <form id="form" name="form" action="/operate" method="POST" class="form-inline">
                 <div class="form-group">
+                    <div class="radio">
+                        <label><input type="radio" name="calculator" value="basic" checked> Calculadora Basica</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="calculator" value="advanced"> Calculadora Avanzada</label>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="left"></label>
                     <input placeholder="Lado izquierdo de la operación" type="number" id="left" name="left" class="form-control" required>
                 </div>

@@ -32,7 +32,11 @@ class CalculadoraBasica extends AbstractCalculadora {
                 break;
         }
         console.log('Operar con calculadora basica');
-        return this.operador.operar(x, y);
+        if (this.operador) {
+            return this.operador.operar(x, y);
+        } else {
+            return 'El operador no existe para esta calculadora';
+        }
     }
 
 }

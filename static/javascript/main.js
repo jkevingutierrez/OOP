@@ -29,7 +29,8 @@ $(function() {
         var data = {
             'left': $('input[name=left]').val(),
             'right': $('input[name=right]').val(),
-            'operator': $('select[name=operator]').val()
+            'operator': $('select[name=operator]').val(),
+            'type': $('input[name=calculator]:checked').val()
         };
 
         console.log(data);
@@ -42,11 +43,15 @@ $(function() {
                 contentType: 'application/json'
             })
             .done(function(response) {
+                console.log(response);
                 var result = response.result;
                 var resultContainer = $('.result-container').show();
-                $('#operation').html(data.left + ' ' + transformarOperador(data.operator) + ' ' + data.right + ' = ');
-                $('#result').html(result);
-                console.log(response);
+                if ( Number.isNaN(Number(result))) {
+                    $('#operation').html(result);
+                } else {
+                    $('#operation').html(data.left + ' ' + transformarOperador(data.operator) + ' ' + data.right + ' = ');
+                    $('#result').html(result);
+                }
             })
             .fail(function(error) {
                 console.error(error);
@@ -54,7 +59,7 @@ $(function() {
     });
 
     function transformarOperador(operador) {
-        var texto = ''
+        var texto = '';
         switch(operador) {
             case 'Division':
                 texto = '/';

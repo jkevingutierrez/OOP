@@ -36,9 +36,17 @@ dispatcher.onGet('/operators', function(request, response) {
 });
 
 dispatcher.onPost('/operate', function(request, response) {
+    console.log(request.body);
+
     var body = JSON.parse(request.body);
-    console.log(body);
-    var fabrica = new FabricaCalculadoraCientifica();
+    var fabrica;
+
+    if (body.type === 'advanced') {
+        fabrica = new FabricaCalculadoraCientifica();
+    }  else if (body.type === 'basic') {
+        fabrica = new FabricaCalculadoraBasica();
+    }
+
     var calculadora = fabrica.crearCalculadora();
     var resultado = calculadora.calcular(body.left, body.right, body.operator);
 
