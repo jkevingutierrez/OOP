@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Calculadora en nodejs</title>
+    <link rel="icon" href="static/images/favicon.ico"> 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="static/styles/style.css">
 </head>
@@ -14,13 +15,13 @@
 
     <head>
         <div class="container">
-            <h1>Calculadora</h1>
+            <h1>Calculadora en Nodejs</h1>
         </div>
     </head>
     <main>
         <div class="container">
             <form id="form" name="form" action="/operate" method="POST" class="form-inline">
-                <div class="form-group">
+                <div class="form-group text-center col-xs-12">
                     <div class="radio">
                         <label><input type="radio" name="calculator" value="basic" checked> Calculadora Basica</label>
                     </div>
@@ -30,7 +31,7 @@
                 </div>
                 <div class="form-group">
                     <label for="left"></label>
-                    <input placeholder="Lado izquierdo de la operación" type="number" id="left" name="left" class="form-control" required>
+                    <input placeholder="Lado izquierdo de la operación" type="number" id="left" name="left" class="form-control" required step="any">
                 </div>
                 <div class="form-group">
                     <label for="operator"></label>
@@ -40,9 +41,11 @@
                 </div>
                 <div class="form-group">
                     <label for="right"></label>
-                    <input placeholder="Lado derecho de la operación"  type="number" id="right" name="right" class="form-control" required>
+                    <input placeholder="Lado derecho de la operación"  type="number" id="right" name="right" class="form-control" required step="any">
                 </div>
-                <button type="submit" class="btn btn-default">Operar</button>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">Operar</button>
+                </div>
             </form>
             <div class="result-container">
                 <h3>Resultado:</h3>

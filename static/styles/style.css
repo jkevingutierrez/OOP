@@ -9,3 +9,11 @@ a {
 .result-container {
     display: none;
 }
+
+.radio {
+    margin: 10px;
+}
+
+.form-inline .form-group {
+    margin-bottom: 10px;
+}

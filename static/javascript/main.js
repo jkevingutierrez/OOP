@@ -2,23 +2,38 @@
 $(function() {
     'use strict';
 
+    let allOperators = [];
+    const operatorSelect = document.getElementById('operator');
+    
     const jqxhr = $.get("/operators")
         .done(function(response) {
             console.log(response);
-            const operators = response.operators;
-            const operatorSelect = document.getElementById('operator');
+            allOperators = response.operators;
 
-            for (let operator of operators) {
-                const option = document.createElement('option');
-                option.text = operator;
-                option.value = operator;
-                operatorSelect.options.add(option);
-            }
+            const operators = allOperators.filter(function(operator) {
+                return operator !== 'Potenciacion' && operator !== 'Raiz';
+            })
+
+            addOperators(operators);
         })
         .fail(function(error) {
             console.error(error);
         });
 
+
+     $('input[type=radio]').change(function(event) {
+         let operators = [];
+         
+        if (this.value == 'basic') {
+            operators = allOperators.filter(function(operator) {
+                return operator !== 'Potenciacion' && operator !== 'Raiz';
+            })
+        } else if (this.value == 'advanced') {
+           operators = allOperators.slice()
+        }
+
+        addOperators(operators);
+    });
 
     $('form').submit(function(event) {
         // stop the form from submitting the normal way and refreshing the page
@@ -46,17 +61,34 @@ $(function() {
                 console.log(response);
                 var result = response.result;
                 var resultContainer = $('.result-container').show();
-                if ( Number.isNaN(Number(result))) {
+                if (!result && result !== 0) {
+                     $('#operation').html('Operación invalida');
+                     $('#result').html('');
+                } else if (Number.isNaN(Number(result))) {
                     $('#operation').html(result);
+                    $('#result').html('');
                 } else {
                     $('#operation').html(data.left + ' ' + transformarOperador(data.operator) + ' ' + data.right + ' = ');
-                    $('#result').html(result);
+                    $('#result').html(Number(result).toPrecision(2));
                 }
             })
             .fail(function(error) {
                 console.error(error);
             });
     });
+
+    function addOperators(operators) {
+         while (operatorSelect.options.length > 1) {
+            operatorSelect.options.remove(operatorSelect.options.length - 1);
+        }
+
+        for (let operator of operators) {
+            const option = document.createElement('option');
+            option.text = operator;
+            option.value = operator;
+            operatorSelect.options.add(option);
+        }
+    }
 
     function transformarOperador(operador) {
         var texto = '';

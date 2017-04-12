@@ -1,5 +1,5 @@
 var AbstractCalculadora = require('./AbstractCalculadora');
-var AbstractOperador = require('../Operadores/AbstractOperador');
+var IOperador = require('../Operadores/IOperador');
 var Division = require('../Operadores/Division');
 var Multiplicacion = require('../Operadores/Multiplicacion');
 var Resta = require('../Operadores/Resta');

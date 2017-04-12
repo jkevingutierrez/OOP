@@ -49,6 +49,7 @@ dispatcher.onPost('/operate', function(request, response) {
 
     var calculadora = fabrica.crearCalculadora();
     var resultado = calculadora.calcular(body.left, body.right, body.operator);
+    console.log(resultado);
 
     if (body) {
         var json = JSON.stringify({

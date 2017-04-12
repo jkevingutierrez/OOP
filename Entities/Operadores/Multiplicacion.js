@@ -1,6 +1,6 @@
-var AbstractOperador = require('./AbstractOperador');
+var IOperador = require('./IOperador');
 
-class Multiplicacion extends AbstractOperador {
+class Multiplicacion extends IOperador {
     constructor() {
         super();
         // Implementation of constructor.
@@ -8,7 +8,10 @@ class Multiplicacion extends AbstractOperador {
     operar(x, y) {
         // Implementation of abstract method.
         console.log('Multiplicar');
-        return x * y;
+        this.x = x;
+        this.y = y;
+        this.resultado = x * y;
+        return this.resultado;
     }
 
 }

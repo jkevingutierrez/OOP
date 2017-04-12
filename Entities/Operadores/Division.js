@@ -1,6 +1,6 @@
-var AbstractOperador = require('./AbstractOperador');
+var IOperador = require('./IOperador');
 
-class Division extends AbstractOperador {
+class Division extends IOperador {
     constructor() {
         super();
         // Implementation of constructor.
@@ -8,7 +8,14 @@ class Division extends AbstractOperador {
     operar(x, y) {
         // Implementation of abstract method.
         console.log('Dividir');
-        return x / y;
+        this.x = x;
+        this.y = y;
+        this.resultado = x / y;
+        if (y === 0) {
+            return 'Division por cero no permitida';
+        }
+
+       return this.resultado;
     }
 
 }

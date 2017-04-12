@@ -1,6 +1,6 @@
-var AbstractOperador = require('./AbstractOperador');
+var IOperador = require('./IOperador');
 
-class Raiz extends AbstractOperador {
+class Raiz extends IOperador {
     constructor() {
         super();
         // Implementation of constructor.
@@ -8,7 +8,13 @@ class Raiz extends AbstractOperador {
     operar(x, y) {
         // Implementation of abstract method.
         console.log('Raiz');
-        return Math.pow(x, 1 / y);
+        this.x = x;
+        this.y = y;
+        this.resultado = Math.pow(x, 1 / y);
+        if (x < 0) {
+            return 'Raiz de un numero negativo no existe';
+        }
+        return this.resultado;
     }
 
 }
